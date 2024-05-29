@@ -20,7 +20,7 @@ Setup Instructions
 Clone the Repository
 bash
 Copy code
-git clone https://github.com/yourusername/banking-application.git
+git clone https://github.com/vish330/Banking-Application.git
 cd banking-application
 
 Create a Virtual Environment and Activate It
