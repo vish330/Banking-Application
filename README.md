@@ -6,13 +6,13 @@ It uses a MySQL database to store and retrieve user information and other bankin
 
 Features
 
-User Authentication: Login with username and password.
-View User Details: Retrieve and display user information.
-View Account Details: Retrieve and display account information.
-View Card Details: Retrieve and display card details.
-View Beneficiary Details: Retrieve and display beneficiary information.
-Add Beneficiary: Add a new beneficiary to the user's account.
-Fund Transfer: Transfer funds between accounts.
+1. User Authentication: Login with username and password.
+2. View User Details: Retrieve and display user information.
+3. View Account Details: Retrieve and display account information.
+4. View Card Details: Retrieve and display card details.
+5. View Beneficiary Details: Retrieve and display beneficiary information.
+6. Add Beneficiary: Add a new beneficiary to the user's account.
+7. Fund Transfer: Transfer funds between accounts.
 
 
 Setup Instructions
