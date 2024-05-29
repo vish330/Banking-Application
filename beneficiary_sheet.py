@@ -1,70 +1,60 @@
 import re
 
-def prompt_beneficiary_input():
-    print("inside prompt_beneficiary_input")
-    
-    beneficiary_details = {}
-    beneficiary_details["beneficiary_name"] = input("Enter beneficiary name: ")
-    beneficiary_details["beneficiary_account_number"] = input("Enter beneficiary account number: ")
-    beneficiary_details["beneficiary_bank"] = input("Enter beneficiary bank name: ").lower()
-    beneficiary_details["beneficiary_ifsc"] = input("Enter beneficiary IFSC code: ")
-    
-    print("outside prompt_beneficiary_input")
-    return beneficiary_details
-
-
-def get_beneficiary_input(beneficiary_details):
+# Function to prompt beneficiary details
+def prompt_beneficiary_input(registration):
     print("inside get_beneficiary_input")
-    
-    beneficiary_name = beneficiary_details["beneficiary_name"]
-    beneficiary_account_number = beneficiary_details["beneficiary_account_number"]
-    beneficiary_bank = beneficiary_details["beneficiary_bank"]
-    beneficiary_ifsc = beneficiary_details["beneficiary_ifsc"]
-    
+
+    registration.update_cell(5,1,"Enter beneficiary name")
+    registration.update_cell(6,1,"Enter beneficiary account number")
+    registration.update_cell(7,1,"Enter beneficiary bank name")
+    registration.update_cell(8,1,"Enter beneficiary IFSC code")
+    registration.update_cell(9,1,"Click on SUBMIT DETAILS from the drop down in D1 cell.")
     print("outside get_beneficiary_input")
-    return beneficiary_name, beneficiary_account_number, beneficiary_bank, beneficiary_ifsc
 
+    return 
 
-def beneficiary_data_validation(beneficiary_name, beneficiary_account_number, beneficiary_bank, beneficiary_ifsc):
-    print("inside beneficiary_data_validation")
+# Function to read beneficiary details 
+def get_beneficiary_input(registration):
+   print("inside get_beneficiary_input")
+   global beneficiary_name, beneficiary_account_number, beneficiary_bank, beneficiary_ifsc
+
+   beneficiary_name = registration.get_all_values()[4][1]
+   beneficiary_account_number = registration.get_all_values()[5][1]
+   beneficiary_bank = registration.get_all_values()[6][1].lower()
+   beneficiary_ifsc = registration.get_all_values()[7][1]
+
+   print("outside get_beneficiary_input")
+   return beneficiary_name, beneficiary_account_number, beneficiary_bank, beneficiary_ifsc
+
+# Function to validate the beneficiary details
+def beneficiary_data_validation(registration, beneficiary_name, beneficiary_account_number, beneficiary_bank, beneficiary_ifsc):
     
+    registration.update_cell(1,4,"Waiting")
+
     invalid_count = 0
     
     if not re.match(r"^[a-zA-Z\s]+$", beneficiary_name):
-        invalid_count += 1
-        print("Beneficiary name must contain only alphabetic characters and spaces.")
+        invalid_count+=1
+        registration.update_cell(5,3,"Beneficiary name must contain only alphabetic characters and spaces.")
     else:
-        print("Valid beneficiary name")
-    
+        registration.update_cell(5,3,"valid beneficiary name")
+
     if not re.match(r"^\d{10,20}$", beneficiary_account_number):
-        invalid_count += 1
-        print("Beneficiary account number must be a number between 10 and 20 digits.")
+        invalid_count+=1
+        registration.update_cell(6,3,"Beneficiary account number must be a number between 10 and 20 digits.")
     else:
-        print("Valid beneficiary account number")
-    
+        registration.update_cell(6,3,"valid beneficiary account number")
+
     if not re.match(r"^[a-zA-Z\s]+$", beneficiary_bank):
-        invalid_count += 1
-        print("Beneficiary bank name must contain only alphabetic characters and spaces.")
+        invalid_count+=1
+        registration.update_cell(7,3,"Beneficiary bank name must contain only alphabetic characters and spaces.")
     else:
-        print("Valid beneficiary bank")
-    
+        registration.update_cell(7,3,"valid beneficiary bank")
+
     if not re.match(r"^[A-Z0-9]{11}$", beneficiary_ifsc):
-        invalid_count += 1
-        print("Beneficiary IFSC code must be 11 characters long, containing only uppercase letters and numbers.")
+        invalid_count+=1
+        registration.update_cell(8,3,"Beneficiary IFSC code must be 11 characters long, containing only uppercase letters and numbers.")
     else:
-        print("Valid beneficiary IFSC")
-    
-    print("outside beneficiary_data_validation")
+        registration.update_cell(8,3,"valid beneficiary ifsc")
+
     return invalid_count
-
-
-if __name__ == "__main__":
-    beneficiary_details = prompt_beneficiary_input()
-    beneficiary_name, beneficiary_account_number, beneficiary_bank, beneficiary_ifsc = get_beneficiary_input(beneficiary_details)
-    invalid_count = beneficiary_data_validation(beneficiary_name, beneficiary_account_number, beneficiary_bank, beneficiary_ifsc)
-    
-    if invalid_count == 0:
-        print("All beneficiary details are valid.")
-    else:
-        print(f"Total invalid fields: {invalid_count}")
-
