@@ -44,26 +44,27 @@ python -m code_files.main
 
 
 Usage
-1.Login
-Enter the username and password to login.
 
-2.View User Details
-Option 1: Display user information such as username, full name, address, aadhar, mobile number, and email.
+ 1.Login
+ Enter the username and password to login.
 
-3.View Account Details
-Option 2: Display account information such as account type, balance, and creation date.
+ 2.View User Details
+ Option 1: Display user information such as username, full name, address, aadhar, mobile number, and email.
 
-4.View Card Details
-Option 3: Display card details such as card number, card type, CVV, expiry date, and MPIN.
+ 3.View Account Details
+ Option 2: Display account information such as account type, balance, and creation date.
 
-5.View Beneficiary Details
-Option 4: Display beneficiary information such as beneficiary name, account number, bank, and IFSC.
+ 4.View Card Details
+ Option 3: Display card details such as card number, card type, CVV, expiry date, and MPIN.
 
-6.Add Beneficiary
-Option 5: Add a new beneficiary to the user's account.
+ 5.View Beneficiary Details
+ Option 4: Display beneficiary information such as beneficiary name, account number, bank, and IFSC.
 
-7.Transfer Funds
-Option 6: Transfer funds from one account to another.
+ 6.Add Beneficiary
+ Option 5: Add a new beneficiary to the user's account.
+
+ 7.Transfer Funds
+ Option 6: Transfer funds from one account to another.
 
 
 
